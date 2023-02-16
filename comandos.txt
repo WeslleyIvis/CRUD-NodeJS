@@ -1,5 +1,9 @@
 mysql -h localhost -u root -p
 
+-- npm install --save express;
+-- npm install --save express-hadlebars
+-- npm install --save sequelize
+-- instalar o banco que sera usado no sequelize
 
 ## Mostra todos os bancos de dados
 show databases;
@@ -36,3 +40,5 @@ DELETE FROM nomeDaTabela WHERE  (CONDICAO EX:) nome = "Weslley"
 
 UPDATE nomeDaTabela SET nome = "novo nome"  <-- MUDA O NOME DE TODOS OS USUARIOS NA TABELA
 UPDATE nomeDaTabela SET nome = "novo nome"  WHERE nome = "antigoNome"; 
+
+DROP TABLE nome
