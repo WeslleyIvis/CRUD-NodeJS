@@ -1,0 +1,52 @@
+<h1>Editar Post</h1>
+
+{{#with post}}
+    <div class="content-post">
+        <small>{{dataValues.createdAt}}</small>
+        <h1>{{dataValues.titulo}}</h1>
+        <p>{{dataValues.conteudo}}</p>
+    </div>
+    <hr>
+
+    <form action='' method=''>
+        <label for='titulo'>Title</label>
+        <input type='text' name='titulo' id='NovoTitulo' placeholder="{{dataValues.titulo}}"/>
+        <label for='conteudo'>Conteudo</label>
+        <textarea type='text' name='conteudo' id='conteudo'></textarea>
+        <button type='submit'>Editar postagem</button>
+        
+    </form>
+    <a href="/"><button>Cancelar</button></a>
+
+
+<script>
+
+    const id = {{dataValues.id}}
+
+    document.querySelector('form').addEventListener('submit', event => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const serialized = new URLSearchParams(formData).toString();
+                
+        async function editar() {
+            await fetch(`/edit?id=${id}`, {
+                method: 'PUT',
+                body: serialized,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            }).then(r => {
+                if (r.ok) {
+                    document.location.reload(true);
+                    return r;
+                }
+            }).catch(erro => {
+                console.log(erro)
+            })
+        }
+        editar();
+    })
+
+</script>
+
+{{/with}}

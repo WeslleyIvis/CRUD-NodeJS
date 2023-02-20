@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');
-const router = require('./routes');
+const router = require('./routes/routes');
 const cors = require('cors');
 
 app.use(cors());
