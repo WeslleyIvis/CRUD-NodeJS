@@ -5,6 +5,7 @@
             <div class="content-post">
                 <small>{{dataValues.createdAt}}</small>
                 <h1>{{dataValues.titulo}}</h1>
+                <img src={{dataValues.img}} alt="">
                 <p>{{dataValues.conteudo}}</p>
                 
                 <button value="{{dataValues.id}}">Deletar</button>    
@@ -15,6 +16,8 @@
 </section>
 
 <script> 
+    
+    // DELETA POST
     $(document).ready(() => {
         $('button[value]').on('click', event => {
             $.ajax({

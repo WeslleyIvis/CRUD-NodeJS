@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const multer = require('multer');
+const upload = multer();
 
 router.get('/cadastro', (req, res) => {
   res.render('cadastro');
@@ -13,30 +15,36 @@ router.get('/editar/:id', (req, res) => {
   });
 });
 
+// C
+
+router.post('/add', upload.single('image'), (req, res) => {
+  const { title, conteudo } = req.body;
+  let image = null;
+
+  if (req.file !== undefined) {
+    image = req.file.buffer;
+  }
+
+  Post.create({
+    titulo: title,
+    conteudo: conteudo,
+    img: image,
+  })
+    .then((r) => console.log(r))
+    .catch((error) => {
+      res.send('Não foi possivel enviar o conteudo: ' + error);
+    });
+});
+
+// R
+
 router.get('/', (req, res) => {
   Post.findAll({ order: [['id', 'DESC']] }).then((posts) => {
     res.render('index', { posts: posts });
   });
 });
 
-router.post('/add', (req, res) => {
-  const { title, conteudo } = req.body;
-  Post.create({
-    titulo: title,
-    conteudo: conteudo,
-  })
-    .then(() => res.redirect('/'))
-    .catch((error) => {
-      res.send('Não foi possivel enviar o conteudo: ' + error);
-    });
-});
-
-router.delete('/deletar', (req, res) => {
-  const { id } = req.query;
-  Post.destroy({ where: { id: id } })
-    .then(() => res.send('Deletado com sucesso'))
-    .catch((erro) => res.send('Erro: ' + erro));
-});
+// U
 
 router.put('/edit', (req, res) => {
   const { id } = req.query;
@@ -55,6 +63,15 @@ router.put('/edit', (req, res) => {
       res.send('Alterado');
     })
     .catch((erro) => res.send(erro));
+});
+
+// D
+
+router.delete('/deletar', (req, res) => {
+  const { id } = req.query;
+  Post.destroy({ where: { id: id } })
+    .then(() => res.send('Deletado com sucesso'))
+    .catch((erro) => res.send('Erro: ' + erro));
 });
 
 module.exports = router;
