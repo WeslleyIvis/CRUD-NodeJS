@@ -4,15 +4,19 @@
     <div class="content-post">
         <small>{{dataValues.createdAt}}</small>
         <h1>{{dataValues.titulo}}</h1>
+        <img src={{dataValues.img}} alt="" width="300px" >
         <p>{{dataValues.conteudo}}</p>
     </div>
     <hr>
+
 
     <form action='' method=''>
         <label for='titulo'>Title</label>
         <input type='text' name='titulo' id='NovoTitulo' placeholder="{{dataValues.titulo}}"/>
         <label for='conteudo'>Conteudo</label>
         <textarea type='text' name='conteudo' id='conteudo'></textarea>
+        <label for="url">Imagem</label>
+        <input type="text" name="url_image">
         <button type='submit'>Editar postagem</button>
         
     </form>
@@ -22,6 +26,7 @@
 <script>
 
     const id = {{dataValues.id}}
+
 
     document.querySelector('form').addEventListener('submit', event => {
         event.preventDefault();
@@ -45,7 +50,7 @@
             })
         }
         editar();
-    })
+    });
 
 </script>
 

@@ -18,19 +18,14 @@ router.get('/editar/:id', (req, res) => {
 // C
 
 router.post('/add', upload.single('image'), (req, res) => {
-  const { title, conteudo } = req.body;
-  let image = null;
-
-  if (req.file !== undefined) {
-    image = req.file.buffer;
-  }
+  const { title, conteudo, url_image } = req.body;
 
   Post.create({
     titulo: title,
     conteudo: conteudo,
-    img: image,
+    img: url_image,
   })
-    .then((r) => console.log(r))
+    .then((r) => res.redirect('/'))
     .catch((error) => {
       res.send('Não foi possivel enviar o conteudo: ' + error);
     });
@@ -48,14 +43,16 @@ router.get('/', (req, res) => {
 
 router.put('/edit', (req, res) => {
   const { id } = req.query;
-  const { titulo, conteudo } = req.body;
-  console.log(req.body);
+  const { titulo, conteudo, url_image } = req.body;
 
-  console.log(titulo, conteudo, id);
+  console.log(url_image === '');
+
   Post.findOne({ where: { id: id } })
     .then((post) => {
       if (post) {
-        (post.titulo = titulo), (post.conteudo = conteudo);
+        (post.titulo = titulo),
+          (post.conteudo = conteudo),
+          (post.img = url_image);
         return post.save();
       }
     })

@@ -5,13 +5,12 @@
             <div class="content-post">
                 <small>{{dataValues.createdAt}}</small>
                 <h1>{{dataValues.titulo}}</h1>
-                <img src={{dataValues.img}} alt="">
+                <img src={{dataValues.img}} alt="" width="300px" >
                 <p>{{dataValues.conteudo}}</p>
                 
                 <button value="{{dataValues.id}}">Deletar</button>    
                 <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
-            </div>
-           
+            </div>          
     {{/each}}
 </section>
 

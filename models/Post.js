@@ -8,7 +8,7 @@ const Post = db.sequelize.define('postagens', {
     type: db.Sequelize.TEXT,
   },
   img: {
-    type: db.Sequelize.BLOB,
+    type: db.Sequelize.STRING,
   },
 });
 
