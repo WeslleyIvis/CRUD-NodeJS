@@ -13,18 +13,30 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .block-posts {       
-        display: flex;
-        flex-wrap: wrap;
+    .post {
+        padding: 10px;
+        background-color: lightcoral;
     }
 
-    .block-posts .content-post {
-        max-width: 300px;
-        width: 100%;
+    .post .block-posts {       
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .post .block-posts .content-post {        
         background-color: lightblue;
         padding: 30px;
+        max-height: 700px;
+        overflow-y:  hidden ;
         margin: 10px;
     }
+
+    .block-posts .content-post img {
+        width: 100%;
+    }
+
+    
       
     </style>
 </head>

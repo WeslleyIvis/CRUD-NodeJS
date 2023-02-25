@@ -45,8 +45,6 @@ router.put('/edit', (req, res) => {
   const { id } = req.query;
   const { titulo, conteudo, url_image } = req.body;
 
-  console.log(url_image === '');
-
   Post.findOne({ where: { id: id } })
     .then((post) => {
       if (post) {
