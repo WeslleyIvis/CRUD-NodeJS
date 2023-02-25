@@ -1,19 +1,21 @@
-<h1>Postagens</h1>
-<a href="/cadastro"><button>Nova Postagem</button></a>
-<section class="block-posts">
-    {{#each posts}}
-            <div class="content-post">
-                <small>{{dataValues.createdAt}}</small>
-                <h1>{{dataValues.titulo}}</h1>
-                <img src={{dataValues.img}} alt="" width="300px" >
-                <p>{{dataValues.conteudo}}</p>
-                
-                <button value="{{dataValues.id}}">Deletar</button>    
-                <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
-            </div>          
-    {{/each}}
-</section>
 
+<section class="post">
+    <h1>Postagens</h1>
+    <a href="/cadastro"><button>Nova Postagem</button></a>
+    <section class="block-posts">
+        {{#each posts}}
+                <div class="content-post">
+                    <small>{{dataValues.updatedAt}}</small>
+                    <h1>{{dataValues.titulo}}</h1>
+                    <img src={{dataValues.img}} alt="" width="300px" >
+                    <p>{{dataValues.conteudo}}</p>
+                    
+                    <button value="{{dataValues.id}}">Deletar</button>    
+                    <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
+                </div>          
+        {{/each}}
+    </section>
+</section>
 <script> 
     
     // DELETA POST
@@ -23,7 +25,6 @@
                 url: `/deletar?id=${event.target.value}`,
                 type: 'DELETE',
                 success: (data) => {
-                    console.log(data);
                     document.location.reload(true)
                 }
             })
