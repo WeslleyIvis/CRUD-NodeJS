@@ -1,35 +1,94 @@
-<h1>Editar Post</h1>
+<style>
+    .content-edit {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: space-around;
+        padding-top: 4em;
+        gap: 10px;
+        margin: 0 auto;
+    }
+
+    .form-edit {
+        margin: 10px ;
+        max-width: 500px;
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    .form-edit button {
+        margin-top: 20px;
+    }
+
+    .view-content-edit {
+        max-width: 1000px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+        gap: 30px;
+        background-color: white;
+    }
+
+    .view-content-edit img {
+        width: 100%;
+        max-width: 550px;
+    }
+
+    .content-edit-text {
+        max-width: 400px;
+        padding: 10px;
+    }
+
+    .content-edit-text p {
+        padding: 10px 0 30px 5px;    
+    }
+
+
+</style>
+
 
 {{#with post}}
-    <div class="content-post">
-        <small>{{dataValues.createdAt}}</small>
-        <h1>{{dataValues.titulo}}</h1>
-        <img src={{dataValues.img}} alt="" width="300px" >
-        <p>{{dataValues.conteudo}}</p>
-    </div>
-    <hr>
+<section class="content-edit">
+    <div class="form-edit">
+        <h1>Editar Post</h1>
+        <hr>
+        <form action='' method='' >
+            <label for="exampleInputEmail1">Novo titulo</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo" name='titulo'>
+            <small id="emailHelp" class="form-text text-muted">Seja crativo >.<</small>
 
-
-    <form action='' method=''>
-        <label for='titulo'>Title</label>
-        <input type='text' name='titulo' id='NovoTitulo' placeholder="{{dataValues.titulo}}"/>
-        <label for='conteudo'>Conteudo</label>
-        <textarea type='text' name='conteudo' id='conteudo'></textarea>
-        <label for="url">Imagem</label>
-        <input type="text" name="url_image">
-        <button type='submit'>Editar postagem</button>
+            <label for="URL">Nova imagem</label>
+            <input type="text" class="form-control" id="URL" placeholder="URL"  name="url_image">
         
-    </form>
-    <a href="/"><button>Cancelar</button></a>
+            <label for="exampleFormControlTextarea1">Descrição</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='conteudo'></textarea>
+            <button class="btn btn-primary">Editar postagem</button>
+            
+        </form>
+
+        <a href="/"><button class="btn btn-secondary">Cancelar</button></a>
+    </div>
+    <div class="view-content-edit">
+        <div>
+            <img src={{dataValues.img}} alt="" width="300px">
+        </div>
+        <div class="content-edit-text">
+            <h2 class="display-4">{{dataValues.titulo}}</h2>
+            <p>{{dataValues.conteudo}}</p>
+            <small>{{dataValues.createdAt}}</small>
+        </div>
+    </div>
+</section>
+    
+
 
 
 <script>
 
     const id = {{dataValues.id}}
 
-
-    document.querySelector('form').addEventListener('submit', event => {
+    document.querySelector('form[class="form-edit"]').addEventListener('submit', event => {
         event.preventDefault();
+        
         const formData = new FormData(event.target);
         const serialized = new URLSearchParams(formData).toString();
                 

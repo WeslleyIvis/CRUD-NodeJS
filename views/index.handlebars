@@ -1,19 +1,20 @@
 
 <section class="post">
     <h1>Postagens</h1>
-    <a href="/cadastro"><button>Nova Postagem</button></a>
+    <a href="/cadastro"><button class="btn btn-primary">Nova Postagem</button></a>
     <section class="block-posts">
         {{#each posts}}
                 <div class="content-post">
-                    <h1>{{dataValues.titulo}}</h1>
+                    <h2 class="display-4">{{dataValues.titulo}}</h2>
+                    <hr>
                     <img src={{dataValues.img}} alt="" width="300px" >
                     <small>{{dataValues.updatedAt}}</small>
                     <p>{{dataValues.conteudo}}</p>
                     
                     <div class="menu-buttons">
-                        <div class="b-none">
-                            <button value="{{dataValues.id}}">Deletar</button>    
+                        <div class="d-none position-menu">
                             <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
+                            <button value="{{dataValues.id}}">Deletar</button>    
                         </div>
                     </div>
                 </div>          
@@ -35,9 +36,23 @@
         })
     })
 
-    document.querySelectorAll('.menu-buttons').forEach((element, index)  => {
-        element.addEventListener('click', () => {
-            console.log(element.firstChild)
-        })
-    })
+    class edit {
+        constructor(target, buttons, className) {
+            this.element = document.querySelectorAll(target);
+            this.menu = document.querySelectorAll(buttons);
+            this.className = className;
+        }
+
+        event() {
+            this.element.forEach((element, i) => {
+                element.addEventListener('click', () => {
+                    this.menu[i].classList.toggle('d-none');
+                })
+            })
+        }
+    }
+
+    const menu = new edit('.menu-buttons', '.position-menu', 'd-none');
+    menu.event();
+
 </script>
