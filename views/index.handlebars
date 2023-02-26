@@ -5,13 +5,17 @@
     <section class="block-posts">
         {{#each posts}}
                 <div class="content-post">
-                    <small>{{dataValues.updatedAt}}</small>
                     <h1>{{dataValues.titulo}}</h1>
                     <img src={{dataValues.img}} alt="" width="300px" >
+                    <small>{{dataValues.updatedAt}}</small>
                     <p>{{dataValues.conteudo}}</p>
                     
-                    <button value="{{dataValues.id}}">Deletar</button>    
-                    <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
+                    <div class="menu-buttons">
+                        <div class="b-none">
+                            <button value="{{dataValues.id}}">Deletar</button>    
+                            <a href="/editar/{{dataValues.id}}"><button>Editar</button></a>
+                        </div>
+                    </div>
                 </div>          
         {{/each}}
     </section>
@@ -28,6 +32,12 @@
                     document.location.reload(true)
                 }
             })
+        })
+    })
+
+    document.querySelectorAll('.menu-buttons').forEach((element, index)  => {
+        element.addEventListener('click', () => {
+            console.log(element.firstChild)
         })
     })
 </script>

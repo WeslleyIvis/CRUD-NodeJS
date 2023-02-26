@@ -13,23 +13,62 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    body {
+    }
+
     .post {
         padding: 10px;
-        background-color: lightcoral;
     }
 
     .post .block-posts {       
         display: grid;
         flex-wrap: wrap;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 
-    .post .block-posts .content-post {        
-        background-color: lightblue;
-        padding: 30px;
-        max-height: 700px;
-        overflow-y:  hidden ;
+    .post .block-posts .content-post {      
+        border-radius: 10px;  
+        background-color: rgb(161, 211, 245);
+        padding: 10px;
+        max-height: 800px;
+        overflow-y: hidden;
         margin: 10px;
+        position: relative;
+    }
+
+
+
+    .block-posts .content-post .menu-buttons::after {
+        z-index: 2;
+        content: '. . .';
+        cursor: pointer;
+        color: blue;
+        position: absolute;
+        top: 0%;
+        left: 90%;
+    }
+
+    .menu-buttons button {
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+        border: none;
+        width: 60px;
+        margin: 2px 0;
+        background-color: rgb(0, 137, 190);
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .d-none .active {
+        display: block !important;
+    }
+
+    .block-posts .content-post .menu-buttons button:hover {
+        color: rgb(155, 252, 206);
     }
 
     .block-posts .content-post img {
