@@ -1,11 +1,15 @@
-<form action='/add' method='POST' enctype="multipart/form-data">
-    <label for='title'>Title</label>
-    <input type='text' name='title' id='title' />
-    <label for='conteudo'>Conteudo</label>
-    <textarea type='text' name='conteudo' id='conteudo'></textarea>
-    <label for="url_name">Url da Imagem</label>
-    <input type="text" name="url_image" id="img">
-    <button type='submit'>Cadastrar postagem</button>
+
+<form action='/add' method='POST' enctype="multipart/form-data" style="max-width: 500px;">
+    <label for="exampleInputEmail1">Titulo</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo" name='titulo'>
+        <small id="emailHelp" class="form-text text-muted">Seja crativo >.<</small>
+
+        <label for="URL">URL da imagem</label>
+        <input type="text" class="form-control" id="URL" placeholder="URL"  name="url_image">
+    
+        <label for="exampleFormControlTextarea1">Descrição</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='conteudo'></textarea>
+        <button>Postar</button>
 </form>
 
 
