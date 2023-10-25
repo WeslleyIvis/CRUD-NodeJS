@@ -1,6 +1,6 @@
 # CRUD-NodeJS
 
-Um crud simples usando NodeJS com Express para fazer as requesições dos dados, Sequelize (ORM) para inserir os dados no banco MySQL e Handlebars para roda o front.
+Um crud simples utilizando NodeJS com Express, utilizando padrões de Rest API, Sequelize (ORM) para manipular os dados do banco de dados MySQL.
 C - Create
 R - Ready
 U - Update
